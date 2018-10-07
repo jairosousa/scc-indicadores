@@ -1,0 +1,83 @@
+{
+    "name": "ResumoDiario",
+    "fields": [
+        {
+            "fieldName": "dataLancamento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "cocosProcessados",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "cocosDesfibrados",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "cri",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "flococo",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "oleoIndustrialTipoA",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "oleoIndustrialETE",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "torta",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "aguaDeCocoSococo",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "aguaDeCocoVerde",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "caixaPadrao",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "porcentagemCocoGerminado",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "totalDeCacambas",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "numeroDeFardos",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "diaLancamento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mesLancamento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "anoLancamento",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181007140313",
+    "entityTableName": "resumo_diario",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

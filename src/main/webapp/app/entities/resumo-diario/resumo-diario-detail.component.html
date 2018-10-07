@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="resumoDiario">
+            <h2><span jhiTranslate="sccIndicadoresApp.resumoDiario.detail.title">Resumo Diario</span> {{resumoDiario.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.dataLancamento">Data Lancamento</span></dt>
+                <dd>
+                    <span>{{resumoDiario.dataLancamento}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.cocosProcessados">Cocos Processados</span></dt>
+                <dd>
+                    <span>{{resumoDiario.cocosProcessados}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.cocosDesfibrados">Cocos Desfibrados</span></dt>
+                <dd>
+                    <span>{{resumoDiario.cocosDesfibrados}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.cri">Cri</span></dt>
+                <dd>
+                    <span>{{resumoDiario.cri}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.flococo">Flococo</span></dt>
+                <dd>
+                    <span>{{resumoDiario.flococo}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.oleoIndustrialTipoA">Oleo Industrial Tipo A</span></dt>
+                <dd>
+                    <span>{{resumoDiario.oleoIndustrialTipoA}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.oleoIndustrialETE">Oleo Industrial ETE</span></dt>
+                <dd>
+                    <span>{{resumoDiario.oleoIndustrialETE}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.torta">Torta</span></dt>
+                <dd>
+                    <span>{{resumoDiario.torta}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.aguaDeCocoSococo">Agua De Coco Sococo</span></dt>
+                <dd>
+                    <span>{{resumoDiario.aguaDeCocoSococo}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.aguaDeCocoVerde">Agua De Coco Verde</span></dt>
+                <dd>
+                    <span>{{resumoDiario.aguaDeCocoVerde}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.caixaPadrao">Caixa Padrao</span></dt>
+                <dd>
+                    <span>{{resumoDiario.caixaPadrao}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.porcentagemCocoGerminado">Porcentagem Coco Germinado</span></dt>
+                <dd>
+                    <span>{{resumoDiario.porcentagemCocoGerminado}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.totalDeCacambas">Total De Cacambas</span></dt>
+                <dd>
+                    <span>{{resumoDiario.totalDeCacambas}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.numeroDeFardos">Numero De Fardos</span></dt>
+                <dd>
+                    <span>{{resumoDiario.numeroDeFardos}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.diaLancamento">Dia Lancamento</span></dt>
+                <dd>
+                    <span>{{resumoDiario.diaLancamento}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.mesLancamento">Mes Lancamento</span></dt>
+                <dd>
+                    <span>{{resumoDiario.mesLancamento}}</span>
+                </dd>
+                <dt><span jhiTranslate="sccIndicadoresApp.resumoDiario.anoLancamento">Ano Lancamento</span></dt>
+                <dd>
+                    <span>{{resumoDiario.anoLancamento}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/resumo-diario', resumoDiario.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

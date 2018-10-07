@@ -1,0 +1,23 @@
+
+{
+    "sccIndicadoresApp": {
+        "destinatario" : {
+            "home": {
+                "title": "Destinatarios",
+                "createLabel": "Criar novo Destinatario",
+                "createOrEditLabel": "Criar ou editar Destinatario"
+            },
+            "created": "Um novo Destinatario foi criado com o identificador {{ param }}",
+            "updated": "Um Destinatario foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Destinatario foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Destinatario {{ id }}?"
+            },
+            "detail": {
+                "title": "Destinatario"
+            },
+            "nome": "Nome",
+            "email": "Email"
+        }
+    }
+}
