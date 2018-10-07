@@ -1,0 +1,94 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="sccIndicadoresApp.resumoDiario.home.title">Resumo Diarios</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-resumo-diario" [routerLink]="['/resumo-diario/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="sccIndicadoresApp.resumoDiario.home.createLabel">
+            Create new Resumo Diario
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="resumoDiarios">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dataLancamento"><span jhiTranslate="sccIndicadoresApp.resumoDiario.dataLancamento">Data Lancamento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cocosProcessados"><span jhiTranslate="sccIndicadoresApp.resumoDiario.cocosProcessados">Cocos Processados</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cocosDesfibrados"><span jhiTranslate="sccIndicadoresApp.resumoDiario.cocosDesfibrados">Cocos Desfibrados</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cri"><span jhiTranslate="sccIndicadoresApp.resumoDiario.cri">Cri</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="flococo"><span jhiTranslate="sccIndicadoresApp.resumoDiario.flococo">Flococo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="oleoIndustrialTipoA"><span jhiTranslate="sccIndicadoresApp.resumoDiario.oleoIndustrialTipoA">Oleo Industrial Tipo A</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="oleoIndustrialETE"><span jhiTranslate="sccIndicadoresApp.resumoDiario.oleoIndustrialETE">Oleo Industrial ETE</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="torta"><span jhiTranslate="sccIndicadoresApp.resumoDiario.torta">Torta</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="aguaDeCocoSococo"><span jhiTranslate="sccIndicadoresApp.resumoDiario.aguaDeCocoSococo">Agua De Coco Sococo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="aguaDeCocoVerde"><span jhiTranslate="sccIndicadoresApp.resumoDiario.aguaDeCocoVerde">Agua De Coco Verde</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="caixaPadrao"><span jhiTranslate="sccIndicadoresApp.resumoDiario.caixaPadrao">Caixa Padrao</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="porcentagemCocoGerminado"><span jhiTranslate="sccIndicadoresApp.resumoDiario.porcentagemCocoGerminado">Porcentagem Coco Germinado</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="totalDeCacambas"><span jhiTranslate="sccIndicadoresApp.resumoDiario.totalDeCacambas">Total De Cacambas</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="numeroDeFardos"><span jhiTranslate="sccIndicadoresApp.resumoDiario.numeroDeFardos">Numero De Fardos</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="diaLancamento"><span jhiTranslate="sccIndicadoresApp.resumoDiario.diaLancamento">Dia Lancamento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mesLancamento"><span jhiTranslate="sccIndicadoresApp.resumoDiario.mesLancamento">Mes Lancamento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="anoLancamento"><span jhiTranslate="sccIndicadoresApp.resumoDiario.anoLancamento">Ano Lancamento</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let resumoDiario of resumoDiarios ;trackBy: trackId">
+                <td><a [routerLink]="['/resumo-diario', resumoDiario.id, 'view' ]">{{resumoDiario.id}}</a></td>
+                <td>{{resumoDiario.dataLancamento | date:'mediumDate'}}</td>
+                <td>{{resumoDiario.cocosProcessados}}</td>
+                <td>{{resumoDiario.cocosDesfibrados}}</td>
+                <td>{{resumoDiario.cri}}</td>
+                <td>{{resumoDiario.flococo}}</td>
+                <td>{{resumoDiario.oleoIndustrialTipoA}}</td>
+                <td>{{resumoDiario.oleoIndustrialETE}}</td>
+                <td>{{resumoDiario.torta}}</td>
+                <td>{{resumoDiario.aguaDeCocoSococo}}</td>
+                <td>{{resumoDiario.aguaDeCocoVerde}}</td>
+                <td>{{resumoDiario.caixaPadrao}}</td>
+                <td>{{resumoDiario.porcentagemCocoGerminado}}</td>
+                <td>{{resumoDiario.totalDeCacambas}}</td>
+                <td>{{resumoDiario.numeroDeFardos}}</td>
+                <td>{{resumoDiario.diaLancamento}}</td>
+                <td>{{resumoDiario.mesLancamento}}</td>
+                <td>{{resumoDiario.anoLancamento}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/resumo-diario', resumoDiario.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/resumo-diario', resumoDiario.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'resumo-diario/'+ resumoDiario.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="resumoDiarios && resumoDiarios.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

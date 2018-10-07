@@ -1,0 +1,38 @@
+
+{
+    "sccIndicadoresApp": {
+        "resumoDiario" : {
+            "home": {
+                "title": "Resumo Diarios",
+                "createLabel": "Create a new Resumo Diario",
+                "createOrEditLabel": "Create or edit a Resumo Diario"
+            },
+            "created": "A new Resumo Diario is created with identifier {{ param }}",
+            "updated": "A Resumo Diario is updated with identifier {{ param }}",
+            "deleted": "A Resumo Diario is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Resumo Diario {{ id }}?"
+            },
+            "detail": {
+                "title": "Resumo Diario"
+            },
+            "dataLancamento": "Data Lancamento",
+            "cocosProcessados": "Cocos Processados",
+            "cocosDesfibrados": "Cocos Desfibrados",
+            "cri": "Cri",
+            "flococo": "Flococo",
+            "oleoIndustrialTipoA": "Oleo Industrial Tipo A",
+            "oleoIndustrialETE": "Oleo Industrial ETE",
+            "torta": "Torta",
+            "aguaDeCocoSococo": "Agua De Coco Sococo",
+            "aguaDeCocoVerde": "Agua De Coco Verde",
+            "caixaPadrao": "Caixa Padrao",
+            "porcentagemCocoGerminado": "Porcentagem Coco Germinado",
+            "totalDeCacambas": "Total De Cacambas",
+            "numeroDeFardos": "Numero De Fardos",
+            "diaLancamento": "Dia Lancamento",
+            "mesLancamento": "Mes Lancamento",
+            "anoLancamento": "Ano Lancamento"
+        }
+    }
+}

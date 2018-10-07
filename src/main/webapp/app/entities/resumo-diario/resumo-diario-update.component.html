@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-resumo-diario-heading" jhiTranslate="sccIndicadoresApp.resumoDiario.home.createOrEditLabel">Create or edit a Resumo Diario</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!resumoDiario.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="resumoDiario.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.dataLancamento" for="field_dataLancamento">Data Lancamento</label>
+                    <div class="input-group">
+                        <input id="field_dataLancamento" type="text" class="form-control" name="dataLancamento" ngbDatepicker  #dataLancamentoDp="ngbDatepicker" [(ngModel)]="resumoDiario.dataLancamento"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dataLancamentoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.cocosProcessados" for="field_cocosProcessados">Cocos Processados</label>
+                    <input type="number" class="form-control" name="cocosProcessados" id="field_cocosProcessados"
+                        [(ngModel)]="resumoDiario.cocosProcessados" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.cocosDesfibrados" for="field_cocosDesfibrados">Cocos Desfibrados</label>
+                    <input type="number" class="form-control" name="cocosDesfibrados" id="field_cocosDesfibrados"
+                        [(ngModel)]="resumoDiario.cocosDesfibrados" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.cri" for="field_cri">Cri</label>
+                    <input type="number" class="form-control" name="cri" id="field_cri"
+                        [(ngModel)]="resumoDiario.cri" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.flococo" for="field_flococo">Flococo</label>
+                    <input type="number" class="form-control" name="flococo" id="field_flococo"
+                        [(ngModel)]="resumoDiario.flococo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.oleoIndustrialTipoA" for="field_oleoIndustrialTipoA">Oleo Industrial Tipo A</label>
+                    <input type="number" class="form-control" name="oleoIndustrialTipoA" id="field_oleoIndustrialTipoA"
+                        [(ngModel)]="resumoDiario.oleoIndustrialTipoA" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.oleoIndustrialETE" for="field_oleoIndustrialETE">Oleo Industrial ETE</label>
+                    <input type="number" class="form-control" name="oleoIndustrialETE" id="field_oleoIndustrialETE"
+                        [(ngModel)]="resumoDiario.oleoIndustrialETE" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.torta" for="field_torta">Torta</label>
+                    <input type="number" class="form-control" name="torta" id="field_torta"
+                        [(ngModel)]="resumoDiario.torta" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.aguaDeCocoSococo" for="field_aguaDeCocoSococo">Agua De Coco Sococo</label>
+                    <input type="number" class="form-control" name="aguaDeCocoSococo" id="field_aguaDeCocoSococo"
+                        [(ngModel)]="resumoDiario.aguaDeCocoSococo" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.aguaDeCocoVerde" for="field_aguaDeCocoVerde">Agua De Coco Verde</label>
+                    <input type="number" class="form-control" name="aguaDeCocoVerde" id="field_aguaDeCocoVerde"
+                        [(ngModel)]="resumoDiario.aguaDeCocoVerde" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.caixaPadrao" for="field_caixaPadrao">Caixa Padrao</label>
+                    <input type="number" class="form-control" name="caixaPadrao" id="field_caixaPadrao"
+                        [(ngModel)]="resumoDiario.caixaPadrao" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.porcentagemCocoGerminado" for="field_porcentagemCocoGerminado">Porcentagem Coco Germinado</label>
+                    <input type="number" class="form-control" name="porcentagemCocoGerminado" id="field_porcentagemCocoGerminado"
+                        [(ngModel)]="resumoDiario.porcentagemCocoGerminado" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.totalDeCacambas" for="field_totalDeCacambas">Total De Cacambas</label>
+                    <input type="number" class="form-control" name="totalDeCacambas" id="field_totalDeCacambas"
+                        [(ngModel)]="resumoDiario.totalDeCacambas" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.numeroDeFardos" for="field_numeroDeFardos">Numero De Fardos</label>
+                    <input type="number" class="form-control" name="numeroDeFardos" id="field_numeroDeFardos"
+                        [(ngModel)]="resumoDiario.numeroDeFardos" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.diaLancamento" for="field_diaLancamento">Dia Lancamento</label>
+                    <input type="text" class="form-control" name="diaLancamento" id="field_diaLancamento"
+                        [(ngModel)]="resumoDiario.diaLancamento" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.mesLancamento" for="field_mesLancamento">Mes Lancamento</label>
+                    <input type="text" class="form-control" name="mesLancamento" id="field_mesLancamento"
+                        [(ngModel)]="resumoDiario.mesLancamento" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sccIndicadoresApp.resumoDiario.anoLancamento" for="field_anoLancamento">Ano Lancamento</label>
+                    <input type="text" class="form-control" name="anoLancamento" id="field_anoLancamento"
+                        [(ngModel)]="resumoDiario.anoLancamento" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

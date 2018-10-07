@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity ResumoDiario.
+    -->
+    <changeSet id="20181007140313-1" author="jhipster">
+        <createTable tableName="resumo_diario">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="data_lancamento" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="cocos_processados" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="cocos_desfibrados" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="cri" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="flococo" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="oleo_industrial_tipo_a" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="oleo_industrial_ete" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="torta" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="agua_de_coco_sococo" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="agua_de_coco_verde" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="caixa_padrao" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="porcentagem_coco_germinado" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="total_de_cacambas" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="numero_de_fardos" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="dia_lancamento" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mes_lancamento" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ano_lancamento" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>
