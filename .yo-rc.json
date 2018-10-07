@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "sccIndicadores",
+    "packageName": "br.com.sococo.resumo",
+    "packageFolder": "br/com/sococo/resumo",
+    "serverPort": 8084,
+    "serviceDiscoveryType": false,
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "enableSwaggerCodegen": false,
+    "messageBroker": false,
+    "buildTool": "maven",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "enableTranslation": true,
+    "nativeLanguage": "pt-br",
+    "languages": [
+      "en",
+      "pt-br"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.4.1",
+    "jwtSecretKey": "ZjNlODQzYzQyOWQxYjU3YTM1MGE4MzNiZDQ2MDgyYTk2ZjUyOTIwMjllZGJmZWI5NTY3MGFiNTQzNjZkMzdjNDE3YWY5ZTdjNzkzOTRhN2M1MDVjN2U2ZGYwNmM0MDAwMzMxYzVhZmU3NmUyN2M1YmVhZjQ0N2Y0NGM2YTFhMzg="
+  },
+  "git-provider": "GitHub",
+  "git-company": "jairosousa",
+  "repository-name": "scc-indicadores"
+}
