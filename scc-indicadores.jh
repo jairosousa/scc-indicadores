@@ -1,0 +1,32 @@
+entity ResumoDiario {
+	dataLancamento LocalDate,
+    cocosProcessados Double,
+    cocosDesfibrados Double,
+    cri Double,
+    flococo Double,
+    oleoIndustrialTipoA Double,
+    oleoIndustrialETE Double,
+    torta Double,
+    aguaDeCocoSococo Double,
+    aguaDeCocoVerde Double,
+    caixaPadrao Double,
+    porcentagemCocoGerminado Double,
+    totalDeCacambas Double,
+    numeroDeFardos Double,
+    diaLancamento String,
+    mesLancamento String,
+    anoLancamento String
+}
+
+entity Destinatario {
+	nome String,
+    email String
+}
+
+// Set pagination options
+paginate ResumoDiario with pagination
+paginate Destinatario with pagination
+
+dto * with mapstruct
+
+service all with serviceImpl
