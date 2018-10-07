@@ -2,9 +2,13 @@ package br.com.sococo.resumo.service;
 
 import br.com.sococo.resumo.domain.User;
 
+import br.com.sococo.resumo.repository.DestinatarioRepository;
+import br.com.sococo.resumo.service.dto.ResumoDiarioDTO;
 import io.github.jhipster.config.JHipsterProperties;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import javax.mail.internet.MimeMessage;
 
@@ -30,6 +34,8 @@ public class MailService {
 
     private static final String USER = "user";
 
+    private static final String OBJ = "obj";
+
     private static final String BASE_URL = "baseUrl";
 
     private final JHipsterProperties jHipsterProperties;
@@ -40,17 +46,20 @@ public class MailService {
 
     private final SpringTemplateEngine templateEngine;
 
+    private final DestinatarioRepository destinatarioRepository;
+
     public MailService(JHipsterProperties jHipsterProperties, JavaMailSender javaMailSender,
-            MessageSource messageSource, SpringTemplateEngine templateEngine) {
+                       MessageSource messageSource, SpringTemplateEngine templateEngine, DestinatarioRepository destinatarioRepository) {
 
         this.jHipsterProperties = jHipsterProperties;
         this.javaMailSender = javaMailSender;
         this.messageSource = messageSource;
         this.templateEngine = templateEngine;
+        this.destinatarioRepository = destinatarioRepository;
     }
 
     @Async
-    public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
+    public void sendEmail(String to , String subject, String content, boolean isMultipart, boolean isHtml) {
         log.debug("Send email[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}",
             isMultipart, isHtml, to, subject, content);
 
@@ -86,9 +95,48 @@ public class MailService {
     }
 
     @Async
+    public void sendEmailFromTemplateResumo(User user, ResumoDiarioDTO resumoDiarioDTO, String templateName, String titleKey) {
+        Locale locale = Locale.forLanguageTag(user.getLangKey());
+        Context context = new Context(locale);
+        context.setVariable(OBJ, resumoDiarioDTO);
+        context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
+        String content = templateEngine.process(templateName, context);
+        String subject = messageSource.getMessage(titleKey, null, locale);
+        sendEmailLancamento(this.listaDestinatarios(), subject, content, false, true);
+
+    }
+
+    private void sendEmailLancamento(String[] listaDestinatarios, String subject, String content, boolean isMultipart, boolean isHtml) {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        try {
+            System.out.println("Enviado email");
+            MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, StandardCharsets.UTF_8.name());
+            message.setTo(listaDestinatarios);
+            message.setFrom(jHipsterProperties.getMail().getFrom());
+            message.setSubject(subject);
+            message.setText(content, isHtml);
+            javaMailSender.send(mimeMessage);
+            log.debug("Sent email to User '{}'", listaDestinatarios);
+        } catch (Exception e) {
+            if (log.isDebugEnabled()) {
+                log.warn("Email could not be sent to user '{}'", listaDestinatarios, e);
+            } else {
+                log.warn("Email could not be sent to user '{}': {}", listaDestinatarios, e.getMessage());
+            }
+        }
+    }
+
+    @Async
     public void sendActivationEmail(User user) {
         log.debug("Sending activation email to '{}'", user.getEmail());
         sendEmailFromTemplate(user, "mail/activationEmail", "email.activation.title");
+    }
+
+    @Async
+    public void sendConfirmacaoLancamentoDiario(ResumoDiarioDTO resumoDiarioDTO, User user) {
+        log.debug("Enviando email lancamento diario '{}'", resumoDiarioDTO.getDataLancamento());
+        log.debug("Sending activation email to '{}'", user.getEmail());
+        sendEmailFromTemplateResumo(user, resumoDiarioDTO, "mail/confirmacaoLancamentoDiario", "email.lancamento.title");
     }
 
     @Async
@@ -101,5 +149,13 @@ public class MailService {
     public void sendPasswordResetMail(User user) {
         log.debug("Sending password reset email to '{}'", user.getEmail());
         sendEmailFromTemplate(user, "mail/passwordResetEmail", "email.reset.title");
+    }
+
+    private String[] listaDestinatarios() {
+        List<String> emails = new ArrayList<>();
+        destinatarioRepository.findAll().forEach(destinatario -> {
+            emails.add(destinatario.getEmail());
+        });
+        return emails.toArray(new String[emails.size()]);
     }
 }

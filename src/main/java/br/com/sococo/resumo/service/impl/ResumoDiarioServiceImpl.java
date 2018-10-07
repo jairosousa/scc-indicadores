@@ -1,5 +1,9 @@
 package br.com.sococo.resumo.service.impl;
 
+import br.com.sococo.resumo.domain.User;
+import br.com.sococo.resumo.repository.UserRepository;
+import br.com.sococo.resumo.security.SecurityUtils;
+import br.com.sococo.resumo.service.MailService;
 import br.com.sococo.resumo.service.ResumoDiarioService;
 import br.com.sococo.resumo.domain.ResumoDiario;
 import br.com.sococo.resumo.repository.ResumoDiarioRepository;
@@ -28,9 +32,15 @@ public class ResumoDiarioServiceImpl implements ResumoDiarioService {
 
     private final ResumoDiarioMapper resumoDiarioMapper;
 
-    public ResumoDiarioServiceImpl(ResumoDiarioRepository resumoDiarioRepository, ResumoDiarioMapper resumoDiarioMapper) {
+    private final UserRepository userRepository;
+
+    private final MailService mailService;
+
+    public ResumoDiarioServiceImpl(ResumoDiarioRepository resumoDiarioRepository, ResumoDiarioMapper resumoDiarioMapper, UserRepository userRepository, MailService mailService) {
         this.resumoDiarioRepository = resumoDiarioRepository;
         this.resumoDiarioMapper = resumoDiarioMapper;
+        this.userRepository = userRepository;
+        this.mailService = mailService;
     }
 
     /**
@@ -44,7 +54,20 @@ public class ResumoDiarioServiceImpl implements ResumoDiarioService {
         log.debug("Request to save ResumoDiario : {}", resumoDiarioDTO);
 
         ResumoDiario resumoDiario = resumoDiarioMapper.toEntity(resumoDiarioDTO);
+
+        resumoDiario.setDiaLancamento(String.valueOf(resumoDiario.getDataLancamento().getDayOfMonth()));
+        resumoDiario.setMesLancamento(String.valueOf(resumoDiario.getDataLancamento().getMonthValue()));
+        resumoDiario.setAnoLancamento(String.valueOf(resumoDiario.getDataLancamento().getYear()));
+
+        String login = SecurityUtils.getCurrentUserLogin().get();
+
+        System.out.println("LOGIN: " + login);
+        Optional<User> user = userRepository.findOneByLogin(login);
+
         resumoDiario = resumoDiarioRepository.save(resumoDiario);
+
+        mailService.sendConfirmacaoLancamentoDiario(resumoDiarioDTO, user.get());
+
         return resumoDiarioMapper.toDto(resumoDiario);
     }
 

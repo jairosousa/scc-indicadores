@@ -28,6 +28,10 @@ public class Destinatario implements Serializable {
     @Column(name = "email")
     private String email;
 
+    public String getDestinatario() {
+        return this.nome + "<"+this.email+">";
+    }
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;

@@ -1,11 +1,15 @@
 package br.com.sococo.resumo.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
+import br.com.sococo.resumo.domain.User;
+import br.com.sococo.resumo.repository.UserRepository;
+import br.com.sococo.resumo.security.SecurityUtils;
+import br.com.sococo.resumo.service.MailService;
 import br.com.sococo.resumo.service.ResumoDiarioService;
+import br.com.sococo.resumo.service.dto.ResumoDiarioDTO;
 import br.com.sococo.resumo.web.rest.errors.BadRequestAlertException;
 import br.com.sococo.resumo.web.rest.util.HeaderUtil;
 import br.com.sococo.resumo.web.rest.util.PaginationUtil;
-import br.com.sococo.resumo.service.dto.ResumoDiarioDTO;
+import com.codahale.metrics.annotation.Timed;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -33,10 +36,16 @@ public class ResumoDiarioResource {
 
     private static final String ENTITY_NAME = "resumoDiario";
 
+    private final MailService mailService;
+
     private final ResumoDiarioService resumoDiarioService;
 
-    public ResumoDiarioResource(ResumoDiarioService resumoDiarioService) {
+    private final UserRepository userRepository;
+
+    public ResumoDiarioResource(MailService mailService, ResumoDiarioService resumoDiarioService, UserRepository userRepository) {
+        this.mailService = mailService;
         this.resumoDiarioService = resumoDiarioService;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -54,6 +63,8 @@ public class ResumoDiarioResource {
             throw new BadRequestAlertException("A new resumoDiario cannot already have an ID", ENTITY_NAME, "idexists");
         }
         ResumoDiarioDTO result = resumoDiarioService.save(resumoDiarioDTO);
+
+
         return ResponseEntity.created(new URI("/api/resumo-diarios/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);

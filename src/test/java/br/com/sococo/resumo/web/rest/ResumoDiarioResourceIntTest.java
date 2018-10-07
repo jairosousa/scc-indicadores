@@ -123,7 +123,7 @@ public class ResumoDiarioResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ResumoDiarioResource resumoDiarioResource = new ResumoDiarioResource(resumoDiarioService);
+        final ResumoDiarioResource resumoDiarioResource = new ResumoDiarioResource(null, resumoDiarioService, null);
         this.restResumoDiarioMockMvc = MockMvcBuilders.standaloneSetup(resumoDiarioResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

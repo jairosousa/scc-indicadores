@@ -45,6 +45,10 @@ public class ResumoDiarioDTO implements Serializable {
 
     private String anoLancamento;
 
+    public Double getTotalCocos() {
+        return this.cocosDesfibrados + this.cocosProcessados;
+    }
+
     public Long getId() {
         return id;
     }

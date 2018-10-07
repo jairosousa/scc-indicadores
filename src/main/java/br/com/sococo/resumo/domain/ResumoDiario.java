@@ -74,6 +74,10 @@ public class ResumoDiario implements Serializable {
     @Column(name = "ano_lancamento")
     private String anoLancamento;
 
+    public Double getTotalCocos() {
+        return cocosDesfibrados + cocosDesfibrados;
+    }
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
