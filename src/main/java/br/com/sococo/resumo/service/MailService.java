@@ -102,7 +102,7 @@ public class MailService {
         context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
         String content = templateEngine.process(templateName, context);
         String subject = messageSource.getMessage(titleKey, null, locale);
-        sendEmailLancamento(this.listaDestinatarios(), subject, content, false, true);
+        sendEmailLancamento(listaDestinatarios(), subject, content, false, true);
 
     }
 
@@ -154,7 +154,7 @@ public class MailService {
     private String[] listaDestinatarios() {
         List<String> emails = new ArrayList<>();
         destinatarioRepository.findAll().forEach(destinatario -> {
-            emails.add(destinatario.getEmail());
+            emails.add(destinatario.getDestinatario());
         });
         return emails.toArray(new String[emails.size()]);
     }

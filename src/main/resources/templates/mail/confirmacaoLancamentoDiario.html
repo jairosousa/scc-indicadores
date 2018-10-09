@@ -12,8 +12,8 @@
                                    th:text="|${obj.diaLancamento}/${obj.mesLancamento}/${obj.anoLancamento}|"></span></h3>
         <h3>Nº da produção:<span th:text="${obj.id}"> </span></h3>
 
-        <table border="1">
-            <tr style="background-color: red; color: white;">
+        <table border="1" style="width: 400px">
+            <tr style="background-color: red; color: white; ">
                 <th>
                     <strong>SOCOCO</strong>
                 </th>
@@ -21,43 +21,43 @@
             </tr>
             <tr>
                 <th>Cocos Proces. (und)</th>
-                <td th:text="${obj.cocosProcessados}"></td>
+                <td th:text="${obj.cocosProcessados}" style="text-align: right"></td>
             </tr>
             <tr>
                 <th>Cocos Desf. (und)</th>
-                <td th:text="${obj.cocosDesfibrados}"></td>
+                <td th:text="${obj.cocosDesfibrados}" style="text-align: right"></td>
             </tr>
             <tr>
                 <th>
                     <span style="color:rgb(154, 0, 0)">Rendimento</span>
                 </th>
-                <td th:text="${obj.getTotalCocos()}">FALTA SOMAR AQUI</td>
+                <td th:text="${obj.totalCocos}" style="text-align: right; font-weight: bold;">FALTA SOMAR AQUI</td>
             </tr>
             <tr>
                 <th>C.R.I (kg)</th>
-                <td th:text="${obj.cri}"></td>
+                <td th:text="${obj.cri}" style="text-align: right"></td>
             </tr>
             <tr>
                 <th>Flococo (kg)</th>
-                <td th:text="${obj.flococo}"></td>
+                <td th:text="${obj.flococo}" style="text-align: right"></td>
             </tr>
             <tr>
                 <th>
                     <span style="color:rgb(154, 0, 0)">Total (C.R.I + Flococo)</span>
                 </th>
-                <td>FALTA SOMAR AQUI</td>
+                <td th:text="${obj.totalCriFlococo}" style="text-align: right; font-weight: bold ">FALTA SOMAR AQUI</td>
             </tr>
             <tr>
                 <th>Óleo Ind. Tipo A (L)</th>
-                <td th:text="${obj.oleoIndustrialTipoA}"></td>
+                <td th:text="${obj.oleoIndustrialTipoA}" style="text-align: right"></td>
             </tr>
             <tr>
                 <th>Óleo Ind. E.T.E (L)</th>
-                <td th:text="${obj.oleoIndustrialETE}"></td>
+                <td th:text="${obj.oleoIndustrialETE}" style="text-align: right"></td>
             </tr>
             <tr>
                 <th>Torta - Ração (kg)</th>
-                <td th:text="${obj.torta}"></td>
+                <td th:text="${obj.torta}" style="text-align: right"></td>
             </tr>
 
             <!-- PRODUCAO ACQUA -->
@@ -69,29 +69,29 @@
             </tr>
             <tr>
                 <th>Água de C. Sococo (L)</th>
-                <td th:text="${obj.aguaDeCocoSococo}"></td>
+                <td th:text="${obj.aguaDeCocoSococo}" style="text-align: right"></td>
             </tr>
             <tr>
                 <th>Água de C. Verde (L)</th>
-                <td th:text="${obj.aguaDeCocoVerde}"></td>
+                <td th:text="${obj.aguaDeCocoVerde}" style="text-align: right"></td>
             </tr>
             <tr>
                 <th>
                     <span style="color:rgb(154, 0, 0)">TOTAL</span>
                 </th>
-                <td>FALTA SOMAR AQUI</td>
+                <td th:text="${obj.totalAguaCocos}" style="text-align: right; font-weight: bold">FALTA SOMAR AQUI</td>
             </tr>
             <tr>
                 <th>Caixa Padrão (und)</th>
-                <td th:text="${obj.caixaPadrao}"></td>
+                <td th:text="${obj.caixaPadrao}" style="text-align: right"></td>
             </tr>
             <tr>
                 <th>Coco Germinado (%)</th>
-                <td th:text="${obj.porcentagemCocoGerminado}"></td>
+                <td th:text="${obj.porcentagemCocoGerminado}" style="text-align: right"></td>
             </tr>
             <tr>
                 <th> Total de Cacambas</th>
-                <td th:text="${obj.totalDeCacambas}"></td>
+                <td th:text="${obj.totalDeCacambas}" style="text-align: right"></td>
             </tr>
 
             <!-- PRODUCAO AMAFIBRA -->
@@ -103,7 +103,7 @@
             </tr>
             <tr>
                 <th>Nº de Fardos (L)</th>
-                <td th:text="${obj.numeroDeFardos}"></td>
+                <td th:text="${obj.numeroDeFardos}" style="text-align: right"></td>
             </tr>
         </table>
 

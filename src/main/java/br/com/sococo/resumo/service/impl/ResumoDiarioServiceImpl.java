@@ -66,7 +66,7 @@ public class ResumoDiarioServiceImpl implements ResumoDiarioService {
 
         resumoDiario = resumoDiarioRepository.save(resumoDiario);
 
-        mailService.sendConfirmacaoLancamentoDiario(resumoDiarioDTO, user.get());
+        mailService.sendConfirmacaoLancamentoDiario(resumoDiarioMapper.toDto(resumoDiario), user.get());
 
         return resumoDiarioMapper.toDto(resumoDiario);
     }

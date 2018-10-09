@@ -1,5 +1,6 @@
 package br.com.sococo.resumo.service.dto;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
@@ -46,7 +47,18 @@ public class ResumoDiarioDTO implements Serializable {
     private String anoLancamento;
 
     public Double getTotalCocos() {
-        return this.cocosDesfibrados + this.cocosProcessados;
+        //DecimalFormat fmt = new DecimalFormat("#.##");
+        return Double.valueOf(cocosDesfibrados + cocosDesfibrados);
+    }
+
+    public Double getTotalCriFlococo() {
+        //DecimalFormat fmt = new DecimalFormat("#.##");
+        return Double.valueOf(cri + flococo);
+    }
+
+    public Double getTotalAguaCocos() {
+        //DecimalFormat fmt = new DecimalFormat("#.##");
+        return Double.valueOf(aguaDeCocoSococo + aguaDeCocoVerde);
     }
 
     public Long getId() {
