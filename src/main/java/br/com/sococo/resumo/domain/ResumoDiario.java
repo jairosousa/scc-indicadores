@@ -74,6 +74,42 @@ public class ResumoDiario implements Serializable {
     @Column(name = "ano_lancamento")
     private String anoLancamento;
 
+    public ResumoDiario() {
+    }
+
+    public ResumoDiario(LocalDate dataLancamento, Double cocosProcessados, Double cocosDesfibrados, Double cri, Double flococo, Double oleoIndustrialTipoA, Double oleoIndustrialETE, Double torta, Double aguaDeCocoSococo, Double aguaDeCocoVerde, Double caixaPadrao, Double porcentagemCocoGerminado, Double totalDeCacambas, Double numeroDeFardos) {
+        this.dataLancamento = dataLancamento;
+        this.cocosProcessados = cocosProcessados;
+        this.cocosDesfibrados = cocosDesfibrados;
+        this.cri = cri;
+        this.flococo = flococo;
+        this.oleoIndustrialTipoA = oleoIndustrialTipoA;
+        this.oleoIndustrialETE = oleoIndustrialETE;
+        this.torta = torta;
+        this.aguaDeCocoSococo = aguaDeCocoSococo;
+        this.aguaDeCocoVerde = aguaDeCocoVerde;
+        this.totalDeCacambas = totalDeCacambas;
+        this.caixaPadrao = caixaPadrao;
+        this.numeroDeFardos = numeroDeFardos;
+        this.porcentagemCocoGerminado = porcentagemCocoGerminado;
+    }
+
+    public ResumoDiario(Double cocosProcessados, Double cocosDesfibrados, Double cri, Double flococo, Double oleoIndustrialTipoA, Double oleoIndustrialETE, Double torta, Double aguaDeCocoSococo, Double aguaDeCocoVerde,  Double caixaPadrao, Double porcentagemCocoGerminado, Double totalDeCacambas, Double numeroDeFardos) {
+        this.cocosProcessados = cocosProcessados;
+        this.cocosDesfibrados = cocosDesfibrados;
+        this.cri = cri;
+        this.flococo = flococo;
+        this.oleoIndustrialTipoA = oleoIndustrialTipoA;
+        this.oleoIndustrialETE = oleoIndustrialETE;
+        this.torta = torta;
+        this.aguaDeCocoSococo = aguaDeCocoSococo;
+        this.aguaDeCocoVerde = aguaDeCocoVerde;
+        this.totalDeCacambas = totalDeCacambas;
+        this.caixaPadrao = caixaPadrao;
+        this.numeroDeFardos = numeroDeFardos;
+        this.porcentagemCocoGerminado = porcentagemCocoGerminado;
+    }
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
