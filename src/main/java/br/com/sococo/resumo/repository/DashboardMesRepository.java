@@ -1,11 +1,16 @@
 package br.com.sococo.resumo.repository;
 
+import br.com.sococo.resumo.domain.ResumoDiario;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface DashboardMesRepository {
+@SuppressWarnings("unused")
+@Repository
+public interface DashboardMesRepository extends JpaRepository<ResumoDiario, Long> {
     @Transactional
     @Query("select rd.mesLancamento, sum(rd.cocosProcessados) FROM ResumoDiario rd WHERE rd.anoLancamento = ?1 GROUP BY rd.mesLancamento")
     List<Object[]> findCocoProcessadoAno(String ano);
