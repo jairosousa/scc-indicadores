@@ -20,12 +20,14 @@ import { SccIndicadoresEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
     imports: [
         BrowserModule,
         SccIndicadoresAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
+        NgxMaskModule.forRoot(),
         SccIndicadoresSharedModule,
         SccIndicadoresCoreModule,
         SccIndicadoresHomeModule,

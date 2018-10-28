@@ -11,11 +11,12 @@ import {
     resumoDiarioRoute,
     resumoDiarioPopupRoute
 } from './';
+import { NgxMaskModule } from 'ngx-mask';
 
 const ENTITY_STATES = [...resumoDiarioRoute, ...resumoDiarioPopupRoute];
 
 @NgModule({
-    imports: [SccIndicadoresSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [SccIndicadoresSharedModule, RouterModule.forChild(ENTITY_STATES), NgxMaskModule],
     declarations: [
         ResumoDiarioComponent,
         ResumoDiarioDetailComponent,

@@ -39,7 +39,7 @@
             <tr *ngFor="let resumoDiario of resumoDiarios ;trackBy: trackId">
                 <td><a [routerLink]="['/resumo-diario', resumoDiario.id, 'view' ]">{{resumoDiario.id}}</a></td>
                 <td>{{resumoDiario.dataLancamento | date:'mediumDate'}}</td>
-                <td>{{resumoDiario.cocosProcessados}}</td>
+                <td>{{resumoDiario.cocosProcessados | mask: '0*.000,00'}}</td>
                 <td>{{resumoDiario.cocosDesfibrados}}</td>
                 <td>{{resumoDiario.cri}}</td>
                 <td>{{resumoDiario.flococo}}</td>
